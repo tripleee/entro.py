@@ -82,16 +82,25 @@ def main (args):
                       dest='debug', action='store_true')
     (opts, args) = parser.parse_args()
 
+    retval = 0
+
     if args == []:
         args = ['-']
     for file in args:
-        if file is '-':
-            handle = sys.stdin
-        else:
-            handle = open(file)
-        data = handle.read()
-        handle.close()
-        print "%s: %f" % (file, H(opts.objtype(data),debug=opts.debug))
+        handle = None
+        try:
+            if file is '-':
+                handle = sys.stdin
+            else:
+                handle = open(file)
+                data = handle.read()
+                print "%s: %f" % (file, H(opts.objtype(data),debug=opts.debug))
+        except IOError:
+            retval = 1
+        finally:
+            if handle is not None:
+                handle.close()
+    return retval
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
