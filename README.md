@@ -1,8 +1,11 @@
 entro.py
 ========
 
-Simple entropy calculation tool for Python
+Simple command-line entropy calculation tool for Python.
 
+The tool can calculate entropy for bits, nybbles, bytes, or
+Unicode code points.  Try with --verbose to see the progress
+of the calculation.
 
 Adapted from http://pythonfiddle.com/shannon-entropy-calculation/
 which in turn features the following comment:
