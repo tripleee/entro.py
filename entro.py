@@ -93,8 +93,8 @@ def main (args):
                 handle = sys.stdin
             else:
                 handle = open(file)
-                data = handle.read()
-                print "%s: %f" % (file, H(opts.objtype(data),debug=opts.debug))
+            data = handle.read()
+            print "%s: %f" % (file, H(opts.objtype(data),debug=opts.debug))
         except IOError:
             retval = 1
         finally:
