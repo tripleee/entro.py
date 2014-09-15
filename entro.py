@@ -55,8 +55,10 @@ def H(data, debug=False):
     for x in count:
         p_x = float(count[x])/len(data)
         if debug:
-            print "# %r: %i/%i = %f => %f" % (
-                x, count[x], len(data), p_x, -p_x*math.log(p_x, data.width(x)))
+            print "# %r: p_x=%i/%i=%f; -p_x*log(p_x,%i)=%f; sum = %f" % (
+                x, count[x], len(data), p_x, data.width(x),
+                -p_x*math.log(p_x, data.width(x)),
+                entropy - (p_x * math.log(p_x, data.width(x))))
         ######## FIXME: base should be 8 for byte entropy,
         # but unclear what exactly it should be for UTF-8
         entropy += - p_x*math.log(p_x, data.width(x))
