@@ -7,6 +7,18 @@ The tool can calculate entropy for bits, nybbles, bytes, or
 Unicode code points.  Try with --verbose to see the progress
 of the calculation.
 
+To use from a library,
+
+    from entro import H, Bit, Nybble, Str, Utf8
+    bit_entropy    = H(Bit(data))
+    nybble_entropy = H(Nybble(data))
+    byte_entropy   = H(Str(data))
+    utf8_entropy   = H(Utf8(data))
+
+
+History / Credits
+-----------------
+
 Adapted from http://pythonfiddle.com/shannon-entropy-calculation/
 which in turn features the following comment:
 
